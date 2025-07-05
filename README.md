@@ -72,3 +72,9 @@ The application is a basic RESTful API in Go for managing "items".
       - `/hello`: Returns "Hello World!" for GET requests.
       - `/items`: Handles GET (retrieve all items) and POST (create new item) requests.
       - `/items/{id}`: Handles GET (retrieve single item), PUT (update item), and DELETE (delete item) requests.
+
+## Acknowledgements
+
+This project was developed with the assistance of [Gemini CLI](https://github.com/google-gemini/gemini-cli).
+
+![Gemini CLI Logo](static/images/gemini-cli.jpg)
