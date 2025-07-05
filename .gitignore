@@ -1,0 +1,26 @@
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go workspace file
+go.work
+
+# Local database file
+test.db
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# IDEs and other tools
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*.bak
+*.tmp
+
+.devdbrc
