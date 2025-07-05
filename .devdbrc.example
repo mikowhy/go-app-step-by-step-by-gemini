@@ -1,0 +1,6 @@
+[
+  {
+    "type": "sqlite",
+    "path": "PATH_TO_YOUR_DATABASE/test.db"
+  }
+]
