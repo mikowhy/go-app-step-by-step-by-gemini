@@ -32,6 +32,21 @@ To implement a simple API for managing a collection of "items" with basic CRUD (
 1. Ensure you are in the project root directory (`go-api-test`).
 2. Run the server: `go run main.go`
 
+## Continuous Integration (CI)
+
+This project uses GitHub Actions for continuous integration. The workflow is configured to automatically build and test the Go application on every push to the `main` branch and on every pull request targeting the `main` branch.
+
+The CI workflow performs the following steps:
+
+- Checks out the repository code.
+- Sets up the Go environment (version 1.22).
+- Caches Go modules to speed up builds.
+- Runs `go mod tidy` to ensure module dependencies are clean.
+- Builds the Go application.
+- Runs all Go tests.
+
+You can view the status of the CI builds in the "Actions" tab of the GitHub repository.
+
 ## How to Test Endpoints
 
 - **GET /:** `curl http://localhost:8080/`
