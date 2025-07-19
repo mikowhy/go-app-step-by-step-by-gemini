@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"bytes"
 	"encoding/json"
 	"net/http"
 
@@ -14,9 +15,26 @@ import (
 func CreateItem(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var item models.Item
-	err := json.NewDecoder(r.Body).Decode(&item)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+
+	// Use a buffer to handle potential empty body issues
+	buf := new(bytes.Buffer)
+	buf.ReadFrom(r.Body)
+	if buf.Len() == 0 {
+		http.Error(w, `{"error": "Request body cannot be empty"}`, http.StatusBadRequest)
+		return
+	}
+	if err := json.Unmarshal(buf.Bytes(), &item); err != nil {
+		http.Error(w, `{"error": "Invalid JSON format"}`, http.StatusBadRequest)
+		return
+	}
+
+	// --- Validation ---
+	if item.Name == "" {
+		http.Error(w, `{"error": "Item name cannot be empty"}`, http.StatusBadRequest)
+		return
+	}
+	if item.Description == "" {
+		http.Error(w, `{"error": "Item description cannot be empty"}`, http.StatusBadRequest)
 		return
 	}
 

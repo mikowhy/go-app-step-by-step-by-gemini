@@ -40,11 +40,13 @@ func init() {
 			{Name: "Webcam", Description: "Full HD webcam with microphone"},
 		}
 
+		// First, assign a unique ID to each item in the slice.
 		for i := range items {
 			items[i].ID = uuid.New().String()
-			DB.Create(&items[i])
 		}
 
+		// Then, perform a single bulk insert operation with the entire slice.
+		DB.Create(&items)
 		log.Println("Initial items added.")
 	}
 
